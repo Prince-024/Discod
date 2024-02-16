@@ -2,11 +2,15 @@
 import discord
 from PIL import Image, ImageDraw, ImageFont
 import io
-
+import os
 intents = discord.Intents.default()
 intents.message_content = True
 bot = discord.Client(intents=intents)
 
+@bot.command()
+async def ping(ctx):
+    ping = round(bot.latency* 1000)
+    await ctx.send(f"{int(ping)}ms")
 @bot.event
 async def on_message(message):
     if message.author == bot.user:
@@ -26,7 +30,7 @@ async def on_message(message):
         sticker = await message.guild.create_sticker(name=f"{emoji}_sticker", description=f"Custom sticker of {emoji}", file=buffered, emoji=emoji)
         await message.channel.send(f"Created sticker: {sticker.name}")
 
-bot.run("MTE2ODAyMDY0MTkxMjQ3NTY5OA.GgTWoN.1rZJs6tF9VkmUwARzKGbT0u_ou5Cb_p9HSPf08")
+bot.run(os.environ["TOKEN"])
 
         
 
