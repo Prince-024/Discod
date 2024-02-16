@@ -6,8 +6,8 @@ from discord.ext import commands
 from PIL import Image, ImageDraw, ImageFont
 import io
 import os
-intents = discord.Intents.default()
-intents.message_content = True
+intents = discord.Intents.all()
+
 bot = commands.Bot(command_prefix="!",intents=intents)
 
 @bot.command()
