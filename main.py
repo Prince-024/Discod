@@ -1,3 +1,5 @@
+import os 
+os.system("pip install discord")
 # This example requires the 'message_content' privileged intent to funct
 import discord
 from PIL import Image, ImageDraw, ImageFont
